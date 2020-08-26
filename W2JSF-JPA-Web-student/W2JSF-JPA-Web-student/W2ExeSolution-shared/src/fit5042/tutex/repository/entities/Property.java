@@ -9,14 +9,11 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -25,38 +22,40 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "PROPERTY")
 @NamedQueries({
-    @NamedQuery(name = "Property.findAll", query = "SELECT u FROM PROPERTY u")
-    , @NamedQuery(name = "Property.findByPropertyid", query = "SELECT u FROM PROPERTY u WHERE u.Propertyid = :Propertyid")
+    @NamedQuery(name = "Property.getAll", query = "SELECT u FROM Property u"),
+    @NamedQuery(name = "Property.getPropertyById",query = "SELECT u FROM Property u WHERE u.propertyId = :Propertyid")
     })
-//@Entity
 public class Property implements Serializable {
 
-    public static final String GET_ALL_QUERY_NAME = "Property.findAll";
-    @Column(name = "property_id")
+    /**
+     *
+     */
+    public static final String GET_ALL_QUERY_NAME = "Property.getAll";
+
     @Id
     @Basic(optional = false)
     @NotNull
+    @Column(name = "PROPERTYID")
     private int propertyId;
-    
+  
     @Basic(optional = false)
     @NotNull
     @Column(name = "SIZE")
     private double size;
-    
-    
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "number_of_bedrooms")
     private int numberOfBedrooms;
-    
-    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "PRICE")
     private double price;
 
-    
     @Embedded
+    @Column(name = "ADDRESS")
     private Address address;
     
     
-    @ElementCollection
-    @Column(name = "value")
     private Set<String> tags;
 
     public Property() {
@@ -73,6 +72,7 @@ public class Property implements Serializable {
     }
 
     
+  
     public int getPropertyId() {
         return propertyId;
     }

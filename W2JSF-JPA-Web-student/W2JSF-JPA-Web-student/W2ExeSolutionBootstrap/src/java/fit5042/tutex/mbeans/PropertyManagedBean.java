@@ -32,7 +32,6 @@ public class PropertyManagedBean implements Serializable {
 
     public List<Property> getAllProperties() {
         try {
-            System.out.println("dsadsadsa");
             return propertyRepository.getAllProperties();
         } catch (Exception ex) {
             Logger.getLogger(PropertyManagedBean.class.getName()).log(Level.SEVERE, null, ex);

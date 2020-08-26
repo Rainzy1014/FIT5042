@@ -8,12 +8,4 @@
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
-  <persistence-unit name="W2ExeSolution-ejbPU2" transaction-type="JTA">
-    <jta-data-source>jdbc/fit5042-week02</jta-data-source>
-    <class>fit5042.tutex.repository.entities.Property</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
-    <properties>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
-    </properties>
-  </persistence-unit>
 </persistence>

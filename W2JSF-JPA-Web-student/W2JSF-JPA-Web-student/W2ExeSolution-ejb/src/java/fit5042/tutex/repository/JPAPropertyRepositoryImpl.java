@@ -1,6 +1,8 @@
 package fit5042.tutex.repository;
 
+import fit5042.tutex.repository.entities.Address;
 import fit5042.tutex.repository.entities.Property;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.ejb.Stateless;
@@ -30,16 +32,22 @@ public class JPAPropertyRepositoryImpl implements PropertyRepository {
     @Override
     public Property searchPropertyById(int id) throws Exception {
         Property property = entityManager.find(Property.class, id);
-        property.getTags().size();
+//int propertyId, Address address, int numberOfBedrooms, double size, double price, Set<String> tags
+//        Address ad = new Address("1","1","1","1","1");
+//        Property property = new Property(2,ad,12,12,21,new HashSet<>());
+//        Query query = entityManager.createNamedQuery("Property.getPropertyById");
+//        query.setParameter("Propertyid", id);
+//        property.getTags().size();
+//        property = (Property) query.getResultList();
         return property;
     }
 
     @Override
     public List<Property> getAllProperties() throws Exception {
-        EntityManager em = null;
-        Query query = em.createNamedQuery("Property.findAll");
-        return query.getResultList();
+         return entityManager.createNamedQuery("Property.getAll").getResultList();
 //        return entityManager.createNamedQuery(Property.GET_ALL_QUERY_NAME).getResultList();
+//          return entityManager.createQuery("SELECT u FROM Property u").getResultList();
+
     }
 
     @Override
